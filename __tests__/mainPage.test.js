@@ -1,4 +1,5 @@
 const { Builder } = require('selenium-webdriver');
+const chrome = require('selenium-webdriver/chrome');
 require('chromedriver');
 const MainPage = require('../pages/mainPage');
 const { describe, beforeAll, afterAll, beforeEach, afterEach, test, expect } = require('@jest/globals');
@@ -9,7 +10,9 @@ describe('[NAVER] 메인 페이지', () => {
 
     // beforeEach : 각 TestCase가 실행되기 전에 사전에 실행되는 백그라운드 함수
     beforeEach(async () => {
-        driver = await new Builder().forBrowser('chrome').build();
+        const options = new chrome.Options();
+        options.addArguments('--start-maximized');
+        driver = await new Builder().forBrowser('chrome').setChromeOptions(options).build();
         mainPage = new MainPage(driver);
         await mainPage.openMainPage();
     });
