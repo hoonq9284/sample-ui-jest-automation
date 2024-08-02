@@ -1,15 +1,11 @@
 const { By, Key } = require('selenium-webdriver');
 const BasePage = require('../base/basePage');
 const elements = require('./pageElements');
-const config = require('../config/config');
+
 
 class MainPage extends BasePage {
     constructor(driver) {
         super(driver);
-    }
-
-    async openMainPage() {
-        await this.open(config.url);
     }
 
     async searchQuery(query) {

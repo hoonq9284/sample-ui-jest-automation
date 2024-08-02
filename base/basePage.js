@@ -10,7 +10,7 @@ class BasePage {
         this.driver = driver;
     }
 
-    async open(url) {
+    async openBrowser(url) {
         await this.driver.get(url);
     }
 

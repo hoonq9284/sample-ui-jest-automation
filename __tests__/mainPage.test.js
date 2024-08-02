@@ -1,27 +1,18 @@
-const { Builder } = require('selenium-webdriver');
-const chrome = require('selenium-webdriver/chrome');
-require('chromedriver');
+const { setUp, tearDown, getDriver } = require('../pages/commonPage');
 const MainPage = require('../pages/mainPage');
-const { describe, beforeAll, afterAll, beforeEach, afterEach, test, expect } = require('@jest/globals');
+const { describe, beforeEach, afterEach, test } = require('@jest/globals');
 
 describe('[NAVER] 메인 페이지', () => {
-    let driver;
     let mainPage;
 
-    // beforeEach : 각 TestCase가 실행되기 전에 사전에 실행되는 백그라운드 함수
     beforeEach(async () => {
-        const options = new chrome.Options();
-        options.addArguments('--start-maximized');
-        driver = await new Builder().forBrowser('chrome').setChromeOptions(options).build();
+        await setUp();
+        const driver = getDriver();
         mainPage = new MainPage(driver);
-        await mainPage.openMainPage();
     });
 
-    // afterEach : 각 TestCase가 실행되고 난 뒤 후처리를 위해 실행되는 함수
     afterEach(async () => {
-        if (driver) {
-            await driver.quit();
-        }
+        await tearDown();
     });
 
     test('검색 창에 "selenium" 입력하고 검증하기', async () => {
