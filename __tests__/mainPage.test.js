@@ -15,6 +15,10 @@ describe('[NAVER] 메인 페이지', () => {
         await tearDown();
     });
 
+    test('메인 페이지 로그인 섹션 UI 확인하기', async () => {
+        await mainPage.checkLoginSection();
+    });
+
     test('검색 창에 "selenium" 입력하고 검증하기', async () => {
         await mainPage.searchAndValidate('selenium', 'selenium : 네이버 검색');
     });

@@ -7,7 +7,10 @@ class MainPage extends BasePage {
     constructor(driver) {
         super(driver);
     }
-
+    async checkLoginSection() {
+        await this.isDisplayed(elements.main.loginSection, By.xpath);
+    }
+    
     async searchAndValidate(query, expectedTitle) {
         await this.inputElement(elements.main.searchBox, query, By.xpath);
         await this.clickElement(elements.main.searchButton, By.xpath);

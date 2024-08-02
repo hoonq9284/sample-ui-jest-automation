@@ -56,12 +56,12 @@ class BasePage {
         }
     }
 
-    async isDisplayed(locator, by) {
+    async isDisplayed(locator, by, highlightOptions = { effectTime: 100, color: "#FF0000", border: 5}) {
         await this.webDriverWait(locator, by);
         const element = await this.findElement(locator, by);
         try {
-            await this.element.isDisplayed();
             await this.highlight(element, highlightOptions);
+            await this.element.isDisplayed();
         } catch (error) {
             console.log(`Error 발생: ${error}`);
             return false;
