@@ -51,15 +51,17 @@ class BasePage {
         try {
             return await this.driver.findElement(by(locator));
         } catch (error) {
-            console.log(`NoSuchElementException 발생: 지정한 로케이터 '${locator}'에 해당하는 엘리먼트를 DOM에서 찾을 수 없습니다. 상세 정보 - ${error}`);
+            console.log(`Exception : 지정한 로케이터 '${locator}'에 해당하는 엘리먼트를 DOM에서 찾을 수 없습니다. 상세 정보 - ${error}`);
             throw error;
         }
     }
 
     async isDisplayed(locator, by) {
+        await this.webDriverWait(locator, by);
         const element = await this.findElement(locator, by);
         try {
-            return await element.isDisplayed();
+            await this.element.isDisplayed();
+            await this.highlight(element, highlightOptions);
         } catch (error) {
             console.log(`Error 발생: ${error}`);
             return false;
