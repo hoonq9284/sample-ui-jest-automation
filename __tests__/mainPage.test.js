@@ -19,6 +19,10 @@ describe('[NAVER] 메인 페이지', () => {
         await mainPage.checkLoginSection();
     });
 
+    test('네이버 지도 페이지로 이동하기', async () => {
+        await mainPage.moveToMapPage();
+    });
+
     test('검색 창에 "selenium" 입력하고 검증하기', async () => {
         await mainPage.searchAndValidate('selenium', 'selenium : 네이버 검색');
     });
