@@ -1,6 +1,6 @@
 const { By, until, Key } = require('selenium-webdriver');
 const config = require('../config/config');
-const waitTime = config.waitTime;
+const waitTime = config.waitTime * 1000;
 
 class BasePage {
     /**
@@ -61,10 +61,10 @@ class BasePage {
         const element = await this.findElement(locator, by);
         try {
             await this.highlight(element, highlightOptions);
-            await this.element.isDisplayed();
+            await element.isDisplayed();
         } catch (error) {
-            console.log(`Error 발생: ${error}`);
-            return false;
+            console.log(`Display Error 발생: ${error}`);
+            throw error;
         }
     }
 

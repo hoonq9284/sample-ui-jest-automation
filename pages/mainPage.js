@@ -4,16 +4,18 @@ const elements = require('./pageElements');
 
 
 class MainPage extends BasePage {
+
     constructor(driver) {
         super(driver);
     }
+
     async checkLoginSection() {
         await this.isDisplayed(elements.main.loginSection, By.xpath);
     }
     
     async moveToMapPage() {
         await this.clickElement(elements.main.mapIcon, By.xpath);
-        await this.switchToWindow(1)
+        await this.switchToWindow(1);
         await this.isDisplayed(elements.main.mapPageLogo, By.xpath);
     }
 

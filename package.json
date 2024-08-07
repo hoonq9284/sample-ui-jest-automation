@@ -4,7 +4,9 @@
   "description": "Selenium WebDriver and Jest setup for automated testing",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "test:mainPage": "jest ../__tests__/mainPage.test.js",
+    "test:weatherPage": "jest ../__tests__/weatherPage.test.js"
   },
   "author": "",
   "license": "ISC",
